@@ -37,7 +37,7 @@
                         <p>{{::item.notes}}</p>
                     </div>
                     <md-button class="md-secondary" ng-click="redirectToLink(item.link)" ng-if="item.link"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
-                    <md-button class="md-secondary" ng-click="layer.changePage()" ng-id="!item.link"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
+                    <md-button class="md-secondary" ng-click="changePage()" ng-if="!item.link"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
                     <md-divider inset></md-divider>
                 </md-list-item>
               </div>
