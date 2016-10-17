@@ -18,7 +18,7 @@
     <div class="container" ng-controller="PagesCtrl as layer" layout="column" layout-fill ng-cloak>
         <md-toolbar md-scroll-shrink class="md-medium-tall md-sticky">
             <div class="md-toolbar-tools">
-                <h2 class="md-headline">book a table</h2>
+                <h2 class="md-headline">book a table {{layer|json}}</h2>
             </div>
         </md-toolbar>
         <div ng-switch="layer.page">
