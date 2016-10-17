@@ -22,7 +22,7 @@
             </div>
         </md-toolbar>
         <md-content flex>
-            <md-datepicker ng-model="today" md-placeholder="today" class="md-sticky" disabled></md-datepicker>
+            <md-datepicker ng-model="today" md-placeholder="today" md-scroll-shrink class="md-sticky" disabled></md-datepicker>
             <md-list flex>
               <div ng-repeat="item in menus">
                 <md-subheader md-scroll-shrink class="md-sticky" ng-if="item.header">{{::item.header}}</md-subheader>
