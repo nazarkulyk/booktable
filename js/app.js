@@ -6,7 +6,7 @@ angular.module('BookTableApp')
         $scope.test = 'Test ' + _.VERSION;
         $scope.title = 'Список';
 
-        _.times(15, function(index) {
+        _.times(4, function(index) {
             todos.push({
                 //face: imagePath,
                 what: "Brunch this weekend?",
