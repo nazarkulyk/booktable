@@ -1,8 +1,9 @@
 [
   {
+    "face": "fa-file-pdf-o",
     "what": "Mittagskarte",
     "who": "Aktuelle Mittagskarte",
-    "notes": "Schaue aktuelle karte im PDF",
+    "notes": "Schaue aktuelle Mittagskarte als PDF",
     "link": "http://dasneuhausen.de/wp-content/uploads/2014/03/Mittagskarte.pdf"
   },
   {
