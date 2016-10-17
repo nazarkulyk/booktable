@@ -1,4 +1,4 @@
-angular.module('BookTableApp', ['ngMaterial']);
+angular.module('BookTableApp', ['ngMaterial', 'angular-loading-bar', 'ngAnimate']);
 
 angular.module('BookTableApp')
     .controller('TestCtrl', ['$scope', function($scope) {
