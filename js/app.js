@@ -7,7 +7,7 @@ angular.module('BookTableApp')
 
 angular.module('BookTableApp')
     .controller('PagesCtrl', ['$scope', '$location', function($scope, $location) {
-      this.path = $location.path;
+      this.path = $location.path();
 
       this.changePage = function() {
         $location.path("details");
