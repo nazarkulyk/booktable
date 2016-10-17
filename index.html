@@ -25,8 +25,9 @@
         <md-content flex ng-controller="MenuCtrl" ng-switch-when="/menu">
             <md-datepicker ng-model="today" md-placeholder="today" disabled></md-datepicker>
             <md-list flex>
+              <md-subheader class="md-sticky" ng-if="item.header">test</md-subheader>
               <div ng-repeat="item in menus">
-                <md-subheader md-scroll-shrink class="md-no-sticky" ng-if="item.header">{{::item.header}}</md-subheader>
+                <md-subheader md-scroll-shrink class="md-sticky" ng-if="item.header">{{::item.header}}</md-subheader>
                 <md-list-item class="md-3-line" ng-if="!item.header" ng-click="null">
                     <div class="md-avatar" ng-if="item.face">
                       <i class="fa" ng-class="item.face" style="padding: 1em 1em;"></i>
