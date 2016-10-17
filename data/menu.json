@@ -20,8 +20,8 @@
     who: "Menu 3",
     notes: "Bestele für heute das Menu 1"
 }, {
-    //face: imagePath,
+    face: imagePath,
     what: "Drucken,
-    who: "Menu 3",
+    who: "",
     notes: "Bestele für heute das Menu 1"
 }]
