@@ -25,10 +25,10 @@
             <md-datepicker ng-model="today" md-placeholder="today" md-scroll-shrink class="md-sticky" disabled></md-datepicker>
             <md-list flex>
               <div ng-repeat="item in menus">
-                <md-subheader md-scroll-shrink class="md-sticky" ng-if="item.header">{{::item.header}}</md-subheader>
+                <md-subheader class="md-sticky" ng-if="item.header">{{::item.header}}</md-subheader>
                 <md-list-item class="md-3-line" ng-if="!item.header">
                     <div class="md-avatar" ng-if="item.face">
-                      <i class="fa" ng-class="item.face"></i>
+                      <i class="fa" ng-class="item.face" style="padding: 0.5em 0.5em;"></i>
                     </div>
                     <div class="md-list-item-text" ng-class="{'md-offset': !item.face}" layout="column">
                         <h3>{{::item.what}}</h3>
