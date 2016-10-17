@@ -16,16 +16,16 @@
 
 <body>
     <div class="container" ng-controller="TestCtrl" layout="column" style="height:600px" ng-cloak>
-        <md-toolbar class="md-warn">
+        <md-toolbar md-scroll-shrink class="md-warn">
             <div class="md-toolbar-tools">
-                <h2 class="md-flex">Tbook a table<</h2>
+                <h2 class="md-headline md-flex">book a table</h2>
             </div>
         </md-toolbar>
         <md-content flex layout-padding>
             <p>I'm hosted with GitHub Pages.</p>
         </md-content>
 
-        <md-toolbar md-scroll-shrink ng-if="true">
+        <md-toolbar md-scroll-shrink>
             <div class="md-toolbar-tools">
                 <h3>
                   <span>{{title}}</span>
