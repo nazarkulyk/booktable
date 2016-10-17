@@ -24,7 +24,7 @@ angular.module('BookTableApp')
         return self.changePage("menu");
       };
 
-      _.isEmpty(this.path) || this.goStart();
+      _.isBlank(this.path) || this.goStart();
     }]);
 
 angular.module('BookTableApp')
