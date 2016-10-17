@@ -33,10 +33,10 @@
         <md-content>
             <md-list flex>
                 <md-list-item class="md-3-line" ng-repeat="item in menus">
-                    <div lass="fa md-avatar" ng-if="item.face">
+                    <div class="md-avatar" ng-if="item.face">
                       <i class="fa" ng-class="item.face"></i>
                     </div>
-                    <div class="md-list-item-text" layout="column">
+                    <div class="md-list-item-text" ng-class="{'md-offset': !item.face}" layout="column">
                         <h3>{{item.what}}</h3>
                         <h4>{{item.who}}</h4>
                         <p>{{item.notes}}</p>
