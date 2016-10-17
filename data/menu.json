@@ -19,12 +19,18 @@
   {
     "what": "Menu 3",
     "who": "Menu 3",
-    "notes": "Bestele für heute das Menu 1"
+    "notes": "Bestele für heute das Menu 3"
   },
   {
-    "face": "imagePath",
+    "face": "fa-print",
     "what": "Drucken",
     "who": "",
-    "notes": "Bestele für heute das Menu 1"
+    "notes": "Druck eine liste"
+  },
+  {
+    "face": "money",
+    "what": "Monatsrechnung",
+    "who": "Drucke eine Monatsrechnung",
+    "notes": "Drucke eine Monatsrechnung"
   }
 ]
