@@ -1,10 +1,16 @@
 [
   {
+    "header":"Aktuell"
+  },
+  {
     "face": "fa-file-pdf-o",
     "what": "Mittagskarte",
     "who": "Aktuelle Mittagskarte",
     "notes": "Schaue aktuelle Mittagskarte als PDF",
     "link": "http://dasneuhausen.de/wp-content/uploads/2014/03/Mittagskarte.pdf"
+  },
+  {
+    "header":"Buche ein Menu für dich"
   },
   {
     "what": "Menü 1",
@@ -20,6 +26,9 @@
     "what": "Menü 3",
     "who": "€ 8,90",
     "notes": "Bestele für heute das Menü 3"
+  },
+  {
+    "header":"Admin"
   },
   {
     "face": "fa-print",
