@@ -27,7 +27,7 @@
               <div ng-repeat="item in menus">
                 <md-subheader md-scroll-shrink class="md-sticky" ng-if="item.header">{{::item.header}}</md-subheader>
                 <md-list-item class="md-3-line" ng-if="!item.header">
-                    <div class="md-avatar" ng-if="item.face">
+                    <div class="md-icon-button" ng-if="item.face">
                       <i class="fa" ng-class="item.face"></i>
                     </div>
                     <div class="md-list-item-text" ng-class="{'md-offset': !item.face}" layout="column">
