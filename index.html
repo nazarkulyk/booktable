@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <h1>Hello World</h1>
+    <h1>Привіт Юля</h1>
     <p>I'm hosted with GitHub Pages.</p>
     <div class="container" ng-controller="TestCtrl" layout="column" style="height:600px" ng-cloak>
         <md-toolbar md-scroll-shrink ng-if="true">
@@ -24,7 +24,19 @@
             </div>
         </md-toolbar>
         <md-content flex>
-          {{test}}
+            <md-list>
+                <md-list-item class="md-3-line" ng-repeat="item in todos">
+                    <!-- img ng-src="{{item.face}}" alt="{{item.who}}" class="md-avatar" -->
+                    <div class="md-list-item-text">
+                        <h3>{{item.what}}</h3>
+                        <h4>{{item.who}}</h4>
+                        <p>
+                            {{item.notes}}
+                        </p>
+                    </div>
+                    <md-divider inset></md-divider>
+                </md-list-item>
+            </md-list>
         </md-content>
     </div>
     <script src="https://cdn.jsdelivr.net/lodash/4.16.4/lodash.min.js"></script>

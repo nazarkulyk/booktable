@@ -4,7 +4,7 @@ angular.module('BookTableApp')
     .controller('TestCtrl', ['$scope', function($scope) {
         var todos = [];
         $scope.test = 'Test ' + _.VERSION;
-        $scope.title = 'My App Title';
+        $scope.title = 'Список';
 
         _.times(15, function(index) {
             todos.push({
