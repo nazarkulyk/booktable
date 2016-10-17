@@ -1,6 +1,11 @@
 angular.module('BookTableApp', ['ngMaterial', 'angular-loading-bar', 'ngAnimate', 'ngAria', 'ngResource']);
 
 angular.module('BookTableApp')
+  .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = false;
+  }]);
+
+angular.module('BookTableApp')
     .controller('TestCtrl', ['$scope', '$resource', function($scope, $resource) {
         $scope.title = 'Список';
 
