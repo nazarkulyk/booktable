@@ -6,13 +6,13 @@ angular.module('BookTableApp')
     }]);
 
 angular.module('BookTableApp')
-    .controller('PagesCtrl', ['$scope', function($scope) {
+    .controller('PagesCtrl', ['$scope', '$location', function($scope, $location) {
 
       $scope.changePage = function() {
-        $scope.page = "details";
+        $location.path("details");
       };
       $scope.goStart = function() {
-        $scope.page = "menu";
+        $location.path("menu");
       };
 
       $scope.goStart();
