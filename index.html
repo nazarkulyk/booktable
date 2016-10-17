@@ -15,13 +15,13 @@
 </head>
 
 <body>
-    <div class="container" ng-controller="PagesCtrl" layout="column" layout-fill ng-cloak>
+    <div class="container" ng-controller="PagesCtrl as layer" layout="column" layout-fill ng-cloak>
         <md-toolbar class="md-medium-tall">
             <div class="md-toolbar-tools">
                 <h2 class="md-headline">book a table</h2>
             </div>
         </md-toolbar>
-        <div ng-switch="page">
+        <div ng-switch="layer.page">
         <md-content flex ng-controller="MenuCtrl" ng-switch-when="menu">
             <md-datepicker ng-model="today" md-placeholder="today" md-scroll-shrink class="md-sticky" disabled></md-datepicker>
             <md-list flex>
@@ -36,7 +36,8 @@
                         <h4>{{::item.who}}</h4>
                         <p>{{::item.notes}}</p>
                     </div>
-                    <md-button class="md-secondary" ng-click="redirectToLink(item.link)"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
+                    <md-button class="md-secondary" ng-click="redirectToLink(item.link)" ng-if="item.link"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
+                    <md-button class="md-secondary" ng-click="layer.changePage()" ng-id="!item.link"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
                     <md-divider inset></md-divider>
                 </md-list-item>
               </div>
