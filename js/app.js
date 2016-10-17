@@ -6,7 +6,7 @@ angular.module('BookTableApp')
     }]);
 
 angular.module('BookTableApp')
-    .controller('TestCtrl', ['$scope', '$resource', function($scope, $resource) {
+    .controller('TestCtrl', ['$scope', '$resource', '$window', function($scope, $resource, $window) {
         $scope.today = new Date();
 
         var menus = $resource('data/menu.json', null, {
