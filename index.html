@@ -15,9 +15,16 @@
 </head>
 
 <body>
-    <h1>book a table</h1>
-    <p>I'm hosted with GitHub Pages.</p>
     <div class="container" ng-controller="TestCtrl" layout="column" style="height:600px" ng-cloak>
+        <md-toolbar class="md-warn">
+            <div class="md-toolbar-tools">
+                <h2 class="md-flex">Tbook a table<</h2>
+            </div>
+        </md-toolbar>
+        <md-content flex layout-padding>
+            <p>I'm hosted with GitHub Pages.</p>
+        </md-content>
+
         <md-toolbar md-scroll-shrink ng-if="true">
             <div class="md-toolbar-tools">
                 <h3>
