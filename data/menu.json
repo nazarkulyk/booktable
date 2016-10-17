@@ -1,0 +1,27 @@
+[{
+    //face: imagePath,
+    what: "Mittagskarte",
+    who: "Aktuelle Mittagskarte",
+    notes: "Schaue aktuelle karte im PDF",
+    link: "http://dasneuhausen.de/wp-content/uploads/2014/03/Mittagskarte.pdf"
+}, {
+    //face: imagePath,
+    what: "Menu 1",
+    who: "Menu 1",
+    notes: "Bestele für heute das Menu 1"
+}, {
+    //face: imagePath,
+    what: "Menu 2",
+    who: "Menu 2",
+    notes: "Bestele für heute das Menu 2"
+}, {
+    //face: imagePath,
+    what: "Menu 3",
+    who: "Menu 3",
+    notes: "Bestele für heute das Menu 1"
+}, {
+    //face: imagePath,
+    what: "Drucken,
+    who: "Menu 3",
+    notes: "Bestele für heute das Menu 1"
+}]
