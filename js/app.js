@@ -11,13 +11,16 @@ angular.module('BookTableApp')
 
       self.path = $location.path();
 
-      this.changePage = function(name) {
-        $location.path(name);
+      this.changePage = function(name, param) {
+        var l = $location.path(name);
+        if(param) {
+          l.search(param);
+        }
         self.path = $location.path();
       };
 
-      this.goDetails = function() {
-        return self.changePage("details");
+      this.goDetails = function(path) {
+        return self.changePage(path[0], path[1]);
       };
 
       this.goStart = function() {

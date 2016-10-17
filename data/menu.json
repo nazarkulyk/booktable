@@ -15,17 +15,20 @@
   {
     "what": "Menü 1",
     "who": "€ 6,90",
-    "notes": "Bestele für heute das Menü 1"
+    "notes": "Bestele für heute das Menü 1",
+    "path": ["details", 1]
   },
   {
     "what": "Menü 2",
     "who": "€ 7,90",
-    "notes": "Bestele für heute das Menü 2"
+    "notes": "Bestele für heute das Menü 2",
+    "path": ["details", 2]
   },
   {
     "what": "Menü 3",
     "who": "€ 8,90",
-    "notes": "Bestele für heute das Menü 3"
+    "notes": "Bestele für heute das Menü 3",
+    "path": ["details", 3]
   },
   {
     "header":"Admin"
