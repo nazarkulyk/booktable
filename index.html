@@ -33,7 +33,7 @@
         <md-content flex>
             <md-list>
                 <md-list-item class="md-3-line" ng-repeat="item in menus">
-                    <i class="fa" ng-class="{{item.face}}" ng-if="item.face"></i>
+                    <i class="fa" ng-class="item.face" ng-if="item.face"></i>
                     <div class="md-list-item-text">
                         <h3>{{item.what}}</h3>
                         <h4>{{item.who}}</h4>
