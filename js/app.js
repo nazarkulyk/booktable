@@ -8,6 +8,7 @@ angular.module('BookTableApp')
 angular.module('BookTableApp')
     .controller('TestCtrl', ['$scope', '$resource', function($scope, $resource) {
         $scope.title = 'Список';
+        $scope.today = new Date();
 
         var menus = $resource('data/menu.json', null, {
           query: {
