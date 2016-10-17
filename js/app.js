@@ -4,11 +4,15 @@ angular.module('BookTableApp')
     .controller('TestCtrl', ['$scope', '$resource', function($scope, $resource) {
         $scope.title = 'Список';
 
-        $scope.menus = $resource('data/menu.json', null, {
+        var menus = $resource('data/menu.json', null, {
           query: {
             method: 'GET',
             isArray: true
           }
+        }).query().$promise;
+
+        menus.then(function(data) {
+          $scope.menus = data;
         });
 
 /*
