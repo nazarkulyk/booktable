@@ -22,16 +22,9 @@
             </div>
         </md-toolbar>
         <md-content flex>
-            <p>Heute <md-datepicker ng-model="today" md-placeholder="today" disabled></md-datepicker></p>
-        <md-toolbar md-scroll-shrink>
-            <div class="md-toolbar-tools">
-                <h3>
-                  <span>Select your action</span>
-                </h3>
-            </div>
-        </md-toolbar>
-        <md-content>
+            <p>Datum: <md-datepicker ng-model="today" md-placeholder="today" disabled></md-datepicker></p>
             <md-list flex>
+                <md-subheader md-scroll-shrink class="md-sticky">elect your action</md-subheader>
                 <md-list-item class="md-3-line" ng-repeat="item in menus">
                     <div class="md-avatar" ng-if="item.face">
                       <i class="fa" ng-class="item.face"></i>
