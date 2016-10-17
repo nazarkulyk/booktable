@@ -7,17 +7,24 @@ angular.module('BookTableApp')
 
 angular.module('BookTableApp')
     .controller('PagesCtrl', ['$scope', '$location', function($scope, $location) {
-      this.path = $location.path();
+      var self = this;
 
-      this.changePage = function() {
-        $location.path("details");
+      self.path = $location.path();
+
+      this.changePage = function(name) {
+        $location.path(name);
+        self.path = $location.path();
+      };
+
+      this.goDetails = function() {
+        return self.changePage("details");
       };
 
       this.goStart = function() {
-        $location.path("menu");
+        return self.changePage("menu");
       };
 
-      this.path || this.goStart();
+      _.isEmpty(this.path) || this.goStart();
     }]);
 
 angular.module('BookTableApp')
