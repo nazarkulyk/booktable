@@ -22,7 +22,7 @@
             </div>
         </md-toolbar>
         <div ng-switch="page">
-        <md-content flex ng-controller="MenuCtrl" ng-switch="menu">
+        <md-content flex ng-controller="MenuCtrl" ng-switch-when="menu">
             <md-datepicker ng-model="today" md-placeholder="today" md-scroll-shrink class="md-sticky" disabled></md-datepicker>
             <md-list flex>
               <div ng-repeat="item in menus">
@@ -42,7 +42,7 @@
               </div>
             </md-list>
         </md-content>
-        <md-content flex ng-controller="MenuCtrl" ng-switch="details">
+        <md-content flex ng-switch-when="details">
             test
         </md-content>
         </div>
