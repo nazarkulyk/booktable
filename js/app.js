@@ -6,7 +6,20 @@ angular.module('BookTableApp')
     }]);
 
 angular.module('BookTableApp')
-    .controller('TestCtrl', ['$scope', '$resource', '$window', function($scope, $resource, $window) {
+    .controller('PagesCtrl', ['$scope', function($scope) {
+
+      $scope.changePage = function() {
+        $scope.page = "details";
+      };
+      $scope.goStart = function() {
+        $scope.page = "menu";
+      };
+
+      $scope.goStart();
+    }]);
+
+angular.module('BookTableApp')
+    .controller('MenuCtrl', ['$scope', '$resource', '$window', function($scope, $resource, $window) {
         $scope.today = new Date();
 
         var menus = $resource('data/menu.json', null, {
@@ -21,8 +34,8 @@ angular.module('BookTableApp')
         });
 
         $scope.redirectToLink = function(link) {
-            if(!link) {
-              return false;
+            if (!link) {
+                return false;
             }
             $window.open(link, '_blank');
         };

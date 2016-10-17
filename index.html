@@ -15,20 +15,21 @@
 </head>
 
 <body>
-    <div class="container" ng-controller="TestCtrl" layout="column" layout-fill ng-cloak>
+    <div class="container" ng-controller="PagesCtrl" layout="column" layout-fill ng-cloak>
         <md-toolbar class="md-medium-tall">
             <div class="md-toolbar-tools">
                 <h2 class="md-headline">book a table</h2>
             </div>
         </md-toolbar>
-        <md-content flex>
+        <div ng-switch="page">
+        <md-content flex ng-controller="MenuCtrl" ng-switch="menu">
             <md-datepicker ng-model="today" md-placeholder="today" md-scroll-shrink class="md-sticky" disabled></md-datepicker>
             <md-list flex>
               <div ng-repeat="item in menus">
                 <md-subheader class="md-sticky" ng-if="item.header">{{::item.header}}</md-subheader>
                 <md-list-item class="md-3-line" ng-if="!item.header">
                     <div class="md-avatar" ng-if="item.face">
-                      <i class="fa" ng-class="item.face" style="padding: 0.5em 0.5em;"></i>
+                      <i class="fa" ng-class="item.face" style="padding: 1em 1em;"></i>
                     </div>
                     <div class="md-list-item-text" ng-class="{'md-offset': !item.face}" layout="column">
                         <h3>{{::item.what}}</h3>
@@ -41,6 +42,10 @@
               </div>
             </md-list>
         </md-content>
+        <md-content flex ng-controller="MenuCtrl" ng-switch="details">
+            test
+        </md-content>
+        </div>
       </md-content>
     </div>
     <script src="https://cdn.jsdelivr.net/lodash/4.16.4/lodash.min.js"></script>
