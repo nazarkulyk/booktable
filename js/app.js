@@ -17,7 +17,7 @@ angular.module('BookTableApp')
 
         self.path = $location.path();
 
-        $scope.today = new Date();
+        this.today = new Date();
 
         this.changePage = function(name, param) {
             var l = $location.path(name);
