@@ -38,7 +38,7 @@ angular.module('BookTableApp')
         };
 
         $rootScope.$on('$locationChangeSuccess', function(event) {
-            self.page.path = $location.url();
+            self.page.path = $location.path();
             self.page.params = $location.search();
         });
 
