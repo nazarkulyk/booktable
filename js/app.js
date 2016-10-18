@@ -5,17 +5,19 @@ angular.module('BookTableApp')
         cfpLoadingBarProvider.includeSpinner = false;
     }]);
 
-angular.module('BookTableApp').config(function($mdDateLocaleProvider) {
-    $mdDateLocaleProvider.formatDate = function(date) {
-        return moment(date).format('DD/MM/YYYY');
-    };
-});
+/* TODO: use this with moment js lib */
+/*
+angular.module('BookTableApp')
+    .config(function($mdDateLocaleProvider) {
+        $mdDateLocaleProvider.formatDate = function(date) {
+            return moment(date).format('YYYY-MM-DD');
+        };
+    });
+*/
 
 angular.module('BookTableApp')
-    .controller('PagesCtrl', ['$scope', '$location', function($scope, $location) {
+    .controller('PagesCtrl', ['$rootScope', '$location', function($rootScope, $location) {
         var self = this;
-
-        self.path = $location.path();
 
         this.today = new Date();
 
@@ -24,7 +26,6 @@ angular.module('BookTableApp')
             if (param) {
                 l.search(param);
             }
-            self.path = $location.path();
         };
 
         this.goDetails = function(path) {
@@ -34,6 +35,12 @@ angular.module('BookTableApp')
         this.goStart = function() {
             return self.changePage("menu");
         };
+
+        $rootScope.$on('$locationChangeSuccess', function(event) {
+            console.log(event);
+            self.path = $location.url();
+            self.params = $location.search();
+        });
 
         _.isEmpty(this.path) && this.goStart();
     }]);
