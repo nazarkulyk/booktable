@@ -17,6 +17,8 @@ angular.module('BookTableApp')
 
         self.path = $location.path();
 
+        $scope.today = new Date();
+
         this.changePage = function(name, param) {
             var l = $location.path(name);
             if (param) {
@@ -38,8 +40,6 @@ angular.module('BookTableApp')
 
 angular.module('BookTableApp')
     .controller('MenuCtrl', ['$scope', '$resource', '$window', function($scope, $resource, $window) {
-        $scope.today = new Date();
-
         var menus = $resource('data/menu.json', null, {
             query: {
                 method: 'GET',
