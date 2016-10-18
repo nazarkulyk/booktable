@@ -22,7 +22,7 @@
             </div>
         </md-toolbar>
         <md-content>
-            <md-datepicker ng-model="today" md-placeholder="today" disabled></md-datepicker>
+            <md-datepicker ng-model="layer.today" md-placeholder="today" disabled></md-datepicker>
             <div ng-switch="layer.path">
                 <md-list ng-controller="MenuCtrl" ng-switch-when="/menu">
                     <div ng-repeat="item in menus">
