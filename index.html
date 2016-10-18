@@ -18,15 +18,15 @@
     <div class="container" ng-controller="PagesCtrl as layer" layout="column" layout-fill flex ng-cloak>
         <md-toolbar>
             <div class="md-toolbar-tools" layout-align="center center">
-                <h2 class="md-headline">book a table</h2>
+                <h2 class="md-headline">book a table {{layer.page.path}}</h2>
             </div>
         </md-toolbar>
         <md-content>
             <md-datepicker ng-model="layer.today" md-placeholder="today" disabled></md-datepicker>
-            <div ng-switch="layer.page.path">
+            <div ng-switch="layer.page.path" layout="column" layout-fill flex ng-cloak>
                 <md-list ng-controller="MenuCtrl" ng-switch-when="/menu">
-                    <div ng-repeat="item in menus">
-                        <md-subheader md-scroll-shrink class="md-sticky" ng-if="item.header">{{::item.header}}</md-subheader>
+                    <section ng-repeat="item in menus">
+                        <md-subheader ng-if="item.header">{{::item.header}}</md-subheader>
                         <md-list-item class="md-3-line" ng-if="!item.header" ng-click="null">
                             <div class="md-avatar" ng-if="item.face">
                                 <i class="fa" ng-class="item.face" style="padding: 1em 1em;"></i>
@@ -40,7 +40,7 @@
                             <md-button class="md-secondary" ng-click="layer.goDetails(item.path)" ng-if="!item.link"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
                             <md-divider inset></md-divider>
                         </md-list-item>
-                    </div>
+                    </section>
                 </md-list>
                 <div ng-switch-when="/details">
                     test
