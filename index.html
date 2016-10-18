@@ -21,32 +21,35 @@
                 <h2 class="md-headline">book a table {{layer.page.path}}</h2>
             </div>
         </md-toolbar>
-        <md-content>
+        <md-content flex layout="column">
             <md-datepicker ng-model="layer.today" md-placeholder="today" disabled></md-datepicker>
-            <div ng-switch="layer.page.path" layout="column" layout-fill flex ng-cloak>
+            <md-content ng-switch="layer.page.path" layout="column" layout-fill flex>
                 <md-list ng-controller="MenuCtrl" ng-switch-when="/menu">
-                    <section ng-repeat="item in menus">
-                        <md-subheader ng-if="item.header">{{::item.header}}</md-subheader>
-                        <md-list-item class="md-3-line" ng-if="!item.header" ng-click="null">
-                            <div class="md-avatar" ng-if="item.face">
-                                <i class="fa" ng-class="item.face" style="padding: 1em 1em;"></i>
-                            </div>
-                            <div class="md-list-item-text" ng-class="{'md-offset': !item.face}" layout="column">
-                                <h3>{{::item.what}}</h3>
-                                <h4>{{::item.who}}</h4>
-                                <p>{{::item.notes}}</p>
-                            </div>
-                            <md-button class="md-secondary" ng-click="redirectToLink(item.link)" ng-if="item.link"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
-                            <md-button class="md-secondary" ng-click="layer.goDetails(item.path)" ng-if="!item.link"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
-                            <md-divider inset></md-divider>
-                        </md-list-item>
-                    </section>
+                    <md-content flex layout="column">
+                        <section ng-repeat="item in menus">
+                            <md-subheader ng-if="item.header">{{::item.header}}</md-subheader>
+                            <md-list-item class="md-3-line" ng-if="!item.header" ng-click="null">
+                                <div class="md-avatar" ng-if="item.face">
+                                    <i class="fa" ng-class="item.face" style="padding: 1em 1em;"></i>
+                                </div>
+                                <div class="md-list-item-text" ng-class="{'md-offset': !item.face}" layout="column">
+                                    <h3>{{::item.what}}</h3>
+                                    <h4>{{::item.who}}</h4>
+                                    <p>{{::item.notes}}</p>
+                                </div>
+                                <md-button class="md-secondary" ng-click="redirectToLink(item.link)" ng-if="item.link"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
+                                <md-button class="md-secondary" ng-click="layer.goDetails(item.path)" ng-if="!item.link"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
+                                <md-divider inset></md-divider>
+                            </md-list-item>
+
+                        </section>
+                    </md-content>
                 </md-list>
                 <div ng-switch-when="/details">
                     test
                 </div>
+            </md-content>
         </md-content>
-        </div>
         <script src="https://cdn.jsdelivr.net/lodash/4.16.4/lodash.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
