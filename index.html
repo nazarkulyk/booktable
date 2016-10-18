@@ -11,60 +11,38 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css" />
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css' media='all' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css" media="all" />
 </head>
 
 <body>
     <div class="container" ng-controller="PagesCtrl as layer" layout="column" layout-fill flex ng-cloak>
         <md-toolbar>
             <div class="md-toolbar-tools" layout-align="center center">
-                <h2 class="md-headline">book a table {{layer.page.path}}</h2>
+                <h2 class="md-headline">book a table</h2>
             </div>
         </md-toolbar>
         <md-content flex layout="column">
-            <md-datepicker ng-model="layer.today" md-placeholder="today" disabled></md-datepicker>
-            <md-content ng-switch="layer.page.path" flex>
-                <md-list ng-controller="MenuCtrl" ng-switch-when="/menu">
-                    <md-content layout-fill flex layout="column">
-                        <section ng-repeat="item in menus">
-                            <md-subheader ng-if="item.header">{{::item.header}}</md-subheader>
-                            <md-list-item class="md-3-line" ng-if="!item.header" ng-click="null">
-                                <div class="md-avatar" ng-if="item.face">
-                                    <i class="fa" ng-class="item.face" style="padding: 1em 1em;"></i>
-                                </div>
-                                <div class="md-list-item-text" ng-class="{'md-offset': !item.face}" layout="column">
-                                    <h3>{{::item.what}}</h3>
-                                    <h4>{{::item.who}}</h4>
-                                    <p>{{::item.notes}}</p>
-                                </div>
-                                <md-button class="md-secondary" ng-click="redirectToLink(item.link)" ng-if="item.link"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
-                                <md-button class="md-secondary" ng-click="layer.goDetails(item.path)" ng-if="!item.link"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
-                                <md-divider inset></md-divider>
-                            </md-list-item>
-
-                        </section>
-                    </md-content>
-                </md-list>
-                <div ng-switch-when="/details">
-                    test
-                </div>
-            </md-content>
+            <md-subheader>
+                <md-datepicker ng-model="layer.today" md-placeholder="today" disabled></md-datepicker>
+            </md-subheader>
+            <md-content ng-include src="layer.currentTpl"></md-content>
         </md-content>
-        <script src="https://cdn.jsdelivr.net/lodash/4.16.4/lodash.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.min.js"></script>
+    </div>
+    <script src="https://cdn.jsdelivr.net/lodash/4.16.4/lodash.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.min.js"></script>
 
-        <!-- loading-bar -->
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js'></script>
+    <!-- loading-bar -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js"></script>
 
-        <!-- Angular Material Library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 
-        <!-- main app -->
-        <script src="js/app.js"></script>
+    <!-- main app -->
+    <script src="js/app.js"></script>
 </body>
 
 </html>

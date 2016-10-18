@@ -1,0 +1,28 @@
+<script type="text/ng-template" id="/views/menu.html">
+<md-list ng-controller="MenuCtrl" flex class="slide-animate">
+  <section ng-repeat="item in menus">
+                            <md-subheader ng-if="item.header">{{::item.header}}</md-subheader>
+                            <md-list-item class="md-3-line" ng-if="!item.header" ng-click="null">
+                                <div class="md-avatar" ng-if="item.face">
+                                    <i class="fa" ng-class="item.face" style="padding: 0,7em 1em;"></i>
+                                </div>
+                                <div class="md-list-item-text" ng-class="{'md-offset': !item.face}" layout="column">
+                                    <h3>{{::item.what}}</h3>
+                                    <h4>{{::item.who}}</h4>
+                                    <p>{{::item.notes}}</p>
+                                </div>
+                                <md-button class="md-secondary" ng-click="redirectToLink(item.link)" ng-if="item.link"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
+                                <md-button class="md-secondary" ng-click="layer.goDetails(item.path)" ng-if="!item.link"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
+                                <md-divider inset></md-divider>
+                            </md-list-item>
+                        </section>
+                </md-list>
+</script>
+
+<script type="text/ng-template" id="/views/test.html">
+  Content of the menu template.
+</script>
+
+<script type="text/ng-template" id="/views/details.html">
+  Content of the details template.
+</script>
