@@ -5,29 +5,35 @@ angular.module('BookTableApp')
         cfpLoadingBarProvider.includeSpinner = false;
     }]);
 
+angular.module('BookTableApp').config(function($mdDateLocaleProvider) {
+    $mdDateLocaleProvider.formatDate = function(date) {
+        return moment(date).format('DD/MM/YYYY');
+    };
+});
+
 angular.module('BookTableApp')
     .controller('PagesCtrl', ['$scope', '$location', function($scope, $location) {
-      var self = this;
+        var self = this;
 
-      self.path = $location.path();
-
-      this.changePage = function(name, param) {
-        var l = $location.path(name);
-        if(param) {
-          l.search(param);
-        }
         self.path = $location.path();
-      };
 
-      this.goDetails = function(path) {
-        return self.changePage(path[0], path[1]);
-      };
+        this.changePage = function(name, param) {
+            var l = $location.path(name);
+            if (param) {
+                l.search(param);
+            }
+            self.path = $location.path();
+        };
 
-      this.goStart = function() {
-        return self.changePage("menu");
-      };
+        this.goDetails = function(path) {
+            return self.changePage(path[0], path[1]);
+        };
 
-      _.isEmpty(this.path) && this.goStart();
+        this.goStart = function() {
+            return self.changePage("menu");
+        };
+
+        _.isEmpty(this.path) && this.goStart();
     }]);
 
 angular.module('BookTableApp')
