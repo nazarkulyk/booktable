@@ -23,7 +23,7 @@
         </md-toolbar>
         <md-content>
             <md-datepicker ng-model="layer.today" md-placeholder="today" disabled></md-datepicker>
-            <div ng-switch="layer.path">
+            <div ng-switch="layer.page.path">
                 <md-list ng-controller="MenuCtrl" ng-switch-when="/menu">
                     <div ng-repeat="item in menus">
                         <md-subheader md-scroll-shrink class="md-sticky" ng-if="item.header">{{::item.header}}</md-subheader>

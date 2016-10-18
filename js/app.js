@@ -19,6 +19,7 @@ angular.module('BookTableApp')
     .controller('PagesCtrl', ['$rootScope', '$location', function($rootScope, $location) {
         var self = this;
 
+        this.page = {};
         this.today = new Date();
 
         this.changePage = function(name, param) {
@@ -37,9 +38,8 @@ angular.module('BookTableApp')
         };
 
         $rootScope.$on('$locationChangeSuccess', function(event) {
-            console.log(event);
-            self.path = $location.url();
-            self.params = $location.search();
+            self.page.path = $location.url();
+            self.page.params = $location.search();
         });
 
         _.isEmpty(this.path) && this.goStart();
