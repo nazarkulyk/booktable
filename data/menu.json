@@ -37,12 +37,14 @@
     "face": "fa-print",
     "what": "Drucken",
     "who": "",
-    "notes": "Druck eine liste"
+    "notes": "Druck eine liste",
+    "path": ["print"]
   },
   {
     "face": "fa-money",
     "what": "Monatsrechnung",
     "who": "Drucke eine Monatsrechnung",
-    "notes": "Drucke eine Monatsrechnung"
+    "notes": "Drucke eine Monatsrechnung",
+    "path": ["report"]
   }
 ]

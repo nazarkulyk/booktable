@@ -1,28 +1,114 @@
 <script type="text/ng-template" id="/views/menu.html">
-<md-list ng-controller="MenuCtrl" flex class="slide-animate">
-  <section ng-repeat="item in menus">
-                            <md-subheader ng-if="item.header">{{::item.header}}</md-subheader>
-                            <md-list-item class="md-3-line" ng-if="!item.header" ng-click="null">
-                                <div class="md-avatar" ng-if="item.face">
-                                    <i class="fa" ng-class="item.face" style="padding: 0,7em 1em;"></i>
-                                </div>
-                                <div class="md-list-item-text" ng-class="{'md-offset': !item.face}" layout="column">
-                                    <h3>{{::item.what}}</h3>
-                                    <h4>{{::item.who}}</h4>
-                                    <p>{{::item.notes}}</p>
-                                </div>
-                                <md-button class="md-secondary" ng-click="redirectToLink(item.link)" ng-if="item.link"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
-                                <md-button class="md-secondary" ng-click="layer.goDetails(item.path)" ng-if="!item.link"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
-                                <md-divider inset></md-divider>
-                            </md-list-item>
-                        </section>
-                </md-list>
-</script>
-
-<script type="text/ng-template" id="/views/test.html">
-  Content of the menu template.
+    <md-list ng-controller="MenuCtrl" flex class="slide-animate">
+        <section ng-repeat="item in menus">
+            <md-subheader ng-if="item.header">{{::item.header}}</md-subheader>
+            <md-list-item class="md-3-line" ng-if="!item.header" ng-click="null">
+                <div class="md-avatar" ng-if="item.face">
+                    <i class="fa" ng-class="item.face" style="padding: 0,7em 1em;"></i>
+                </div>
+                <div class="md-list-item-text" ng-class="{'md-offset': !item.face}" layout="column">
+                    <h3>{{::item.what}}</h3>
+                    <h4>{{::item.who}}</h4>
+                    <p>{{::item.notes}}</p>
+                </div>
+                <md-button class="md-secondary" ng-click="redirectToLink(item.link)" ng-if="item.link"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
+                <md-button class="md-secondary" ng-click="layer.goDetails(item.path)" ng-if="!item.link"><i class="fa fa-chevron-right" aria-hidden="true"></i></md-button>
+                <md-divider inset></md-divider>
+            </md-list-item>
+        </section>
+    </md-list>
 </script>
 
 <script type="text/ng-template" id="/views/details.html">
-  Content of the details template.
+    <section ng-controller="DetailsCtrl">
+        <md-subheader ng-if="menu">Reservierung Menü {{::menu}}</md-subheader>
+        <md-content layout="column" layout-padding flex>
+            <form name="menuBooking">
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Vorname</label>
+                        <input name="firstName" ng-model="user.firstName" required>
+                        <div ng-messages="menuBooking.firstName.$error" role="alert">
+                            <div ng-message="required" class="my-message">Vorname fehlt.</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Nachname</label>
+                        <input name="lastName" ng-model="user.lastName" required>
+                        <div ng-messages="menuBooking.lastName.$error" role="alert">
+                            <div ng-message="required" class="my-message">Nachname fehlt.</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>D-Nummer</label>
+                        <input name="userId" ng-model="user.id" placeholder="Dxxx" required ng-pattern="/^[Dd][0-9]{3}$/" md-maxlength="4">
+
+                        <div ng-messages="menuBooking.userId.$error" role="alert" multiple>
+                            <div ng-message="required" class="my-message">D-Nummer fehlt.</div>
+                            <div ng-message="pattern" class="my-message">
+                                Nicht Valide D-Nummer
+                            </div>
+                            <div ng-message="md-maxlength" class="my-message">
+                                D-Nummer ist dreistellig bis jetzt...
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <div layout="row" flex ng-if="signImg">
+                        <img data-ng-src="{{signImg}}" data-err-src="images/png/avatar.png" />
+                    </div>
+                    <div layout="row" flex>
+                        <md-button ng-click="sign()" md-autofocus>Unterschreiben</md-button>
+                    </div>
+
+                    <div layout="row" layout-align="end" flex>
+                        <md-button ng-click="clearValue()" ng-disabled="_.isEmpty(user)">Clear</md-button>
+                        <md-button ng-click="save()" class="md-primary">Save</md-button>
+                    </div>
+                </div>
+            </form>
+        </md-content>
+    </section>
+</script>
+
+<script type="text/ng-template" id="/views/signature.html">
+    <md-dialog aria-label="Signature">
+        <form ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>Unterschrift</h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="cancel()">
+                        <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+
+            <md-dialog-content>
+                <canvas ng-signature-pad="signature"></canvas>
+            </md-dialog-content>
+            <md-dialog-actions layout="row">
+              <md-button md-autofocus ng-click="signature.clear()">
+                    Clear
+              </md-button>
+                <md-button md-autofocus ng-click="cancel()">
+                    Abbrechen
+                </md-button>
+                <span flex></span>
+                <md-button ng-click="hide(signature.toDataURL())" md-autofocus md-primary>
+                    Ok
+                </md-button>
+            </md-dialog-actions>
+        </form>
+    </md-dialog>
+</script>
+
+
+<script type="text/ng-template" id="/views/print.html">
+    Content of the print template.
+</script>
+
+<script type="text/ng-template" id="/views/report.html">
+    Content of the report template.
 </script>

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>book a table</title>
-    <meta name="description" content="">
+    <meta name="description" content="Book a Table for firm">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="css/normalize.css">
@@ -18,14 +18,14 @@
     <div class="container" ng-controller="PagesCtrl as layer" layout="column" layout-fill flex ng-cloak>
         <md-toolbar>
             <div class="md-toolbar-tools" layout-align="center center">
-                <h2 class="md-headline">book a table</h2>
+                <h2 class="md-headline" ng-click="layer.goStart()" style="cursor: pointer;">book a table</h2>
             </div>
         </md-toolbar>
         <md-content flex layout="column">
             <md-subheader>
                 <md-datepicker ng-model="layer.today" md-placeholder="today" disabled></md-datepicker>
             </md-subheader>
-            <md-content ng-include src="layer.currentTpl"></md-content>
+            <md-content ng-include src="layer.currentTpl" flex layout="column" layout-fill></md-content>
         </md-content>
     </div>
     <script src="https://cdn.jsdelivr.net/lodash/4.16.4/lodash.min.js"></script>
@@ -40,6 +40,9 @@
 
     <!-- Angular Material Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+    <script src="js/signature_pad.min.js"></script>
+    <script src="js/ng-signature-pad.js"></script>
 
     <!-- main app -->
     <script src="js/app.js"></script>

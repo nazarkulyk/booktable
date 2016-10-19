@@ -1,4 +1,4 @@
-angular.module('BookTableApp', ['ngMaterial', 'angular-loading-bar', 'ngAnimate', 'ngAria', 'ngResource']);
+angular.module('BookTableApp', ['ngMaterial', 'angular-loading-bar', 'ngAnimate', 'ngAria', 'ngResource', 'ngSignaturePad']);
 
 angular.module('BookTableApp')
     .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
@@ -61,33 +61,30 @@ angular.module('BookTableApp').factory('$templateCache', ['$cacheFactory', '$htt
 
 angular.module('BookTableApp')
     .controller('PagesCtrl', ['$rootScope', '$location', function($rootScope, $location) {
-      var self = this;
+        var self = this;
 
-      this.page = {};
-      this.today = new Date();
+        this.page = {};
+        this.today = new Date();
 
-      this.changePage = function(name, param) {
-          var l = $location.path(name);
-          if (param) {
-              l.search(param);
-          }
-      };
+        this.changePage = function(name, param) {
+            $location.path(name + (param ? '/' + param : ''));
+        };
 
-      this.goDetails = function(path) {
-          return self.changePage(path[0], path[1]);
-      };
+        this.goDetails = function(path) {
+            return self.changePage(path[0], path[1]);
+        };
 
-      this.goStart = function() {
-          return self.changePage("menu");
-      };
+        this.goStart = function() {
+            return self.changePage("menu");
+        };
 
-      $rootScope.$on('$locationChangeSuccess', function(event) {
-          self.page.path = $location.path();
-          self.page.params = $location.search();
-          self.currentTpl = '/views' + self.page.path + '.html';
-      });
+        $rootScope.$on('$locationChangeSuccess', function(event) {
+            self.page.path = $location.path();
+            self.currentTpl = '/views/' + _.last(_.split(self.page.path, '/', 2)) + '.html';
+        });
 
-      _.isEmpty(this.path) && this.goStart();
+        //this.page.path = this.page.path || $location.path();
+        _.isEmpty(this.page.path) && this.goStart();
     }]);
 
 angular.module('BookTableApp')
@@ -109,4 +106,50 @@ angular.module('BookTableApp')
             }
             $window.open(link, '_blank');
         };
+    }]);
+
+angular.module('BookTableApp')
+    .controller('DetailsCtrl', ['$scope', '$location', '$resource', '$mdDialog', function($scope, $location, $resource, $mdDialog) {
+        $scope._ = _;
+        $scope.user = {};
+        $scope.menu = _.last(_.split($location.path(), '/', 3));
+
+        $scope.clearValue = function() {
+            $scope.user = {};
+            $scope.menuBooking.$setPristine();
+        };
+
+        $scope.save = function() {
+            if ($scope.menuBooking.$valid) {
+                $scope.menuBooking.$setSubmitted();
+                alert('Form was valid.');
+            } else {
+                alert('Form was invalid!');
+            }
+        };
+
+        $scope.sign = function(ev) {
+            // Appending dialog to document.body to cover sidenav in docs app
+            $mdDialog.show({
+                controller: DialogController,
+                templateUrl: '/views/signature.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true,
+                fullscreen: false // Only for -xs, -sm breakpoints.
+            }).then(function(result) {
+                $scope.signImg = result;
+            });
+        };
+
+        function DialogController($scope, $mdDialog) {
+            $scope.hide = function(sign) {
+                $mdDialog.hide(sign);
+            };
+
+            $scope.cancel = function() {
+                $mdDialog.cancel();
+            };
+        }
+
     }]);
