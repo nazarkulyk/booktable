@@ -60,7 +60,7 @@ angular.module('BookTableApp').factory('$templateCache', ['$cacheFactory', '$htt
 }]);
 
 angular.module('BookTableApp')
-    .controller('PagesCtrl', ['$rootScope', '$location', function($rootScope, $location) {
+    .controller('PagesCtrl', ['$rootScope', '$location', '$window', function($rootScope, $location, $window) {
         var self = this;
 
         this.page = {};
@@ -83,12 +83,27 @@ angular.module('BookTableApp')
             self.currentTpl = '/views/' + _.last(_.split(self.page.path, '/', 2)) + '.html';
         });
 
+        this.redirectToLink = function(link) {
+            if (!link) {
+                return false;
+            }
+            $window.open(link, '_blank');
+        };
+
+        this.navigate = function(item) {
+            if (item.link) {
+                this.redirectToLink(item.link);
+            } else if (item.path) {
+                this.goDetails(item.path);
+            }
+        };
+
         //this.page.path = this.page.path || $location.path();
         _.isEmpty(this.page.path) && this.goStart();
     }]);
 
 angular.module('BookTableApp')
-    .controller('MenuCtrl', ['$scope', '$resource', '$window', function($scope, $resource, $window) {
+    .controller('MenuCtrl', ['$scope', '$resource', function($scope, $resource) {
         var menus = $resource('data/menu.json', null, {
             query: {
                 method: 'GET',
@@ -99,13 +114,6 @@ angular.module('BookTableApp')
         menus.then(function(data) {
             $scope.menus = data;
         });
-
-        $scope.redirectToLink = function(link) {
-            if (!link) {
-                return false;
-            }
-            $window.open(link, '_blank');
-        };
     }]);
 
 angular.module('BookTableApp')
